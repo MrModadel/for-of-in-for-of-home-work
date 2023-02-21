@@ -48,23 +48,34 @@ let companies = [
       expensesPerYear: [40000, 5000, 7000]
    },
 ]
-let expensesPerMoth, expensesPerMothProc, expensesPerMothP, budgetMoth, all, proc;
-all = 0;
+// let expensesPerMoth, expensesPerMothProc, expensesPerMothP, budgetMoth, all, proc, allexpensesPerMothProc;
+// all = 0;
+// allexpensesPerMothProc = 0;
+// for (let i of companies) {
+//    document.write(`Компания ${i.name} <br>`)
+//    document.write(`бьюджет ${i.budget} <br>`)
+//    for (let k of i.expensesPerYear) {
+//       for (let k of i.expensesPerYear) {
+//          allexpensesPerMothProc += k
+//       }
+//       expensesPerMothProc = Math.round((allexpensesPerMothProc / 12) / 100 * i.tax);
+//       console.log(expensesPerMothProc);
+//       expensesPerMoth = Math.round(allexpensesPerMothProc / i.tax);
+//       expensesPerMothAll = Math.round(expensesPerMoth + expensesPerMothProc);
+//       all += expensesPerMothAll;
+//       budgetMoth = i.budget - all;
+//       proc = (all * 100 / i.budget).toString().slice(0, 5);
+//       document.write(`расходы за месяц (включая налог)=${expensesPerMothAll} от ${k} <br> `);
+//       document.write(`расходы за месяц=${expensesPerMoth} от ${k} <br> `);
+//    }
+//    document.write(`бьюджет за месяц=${budgetMoth} <br>`);
+//    document.write(`Все расходы=${all} <br>`);
+//    document.write(`соотношение бьюджета и расходов в процентах ${"-" + proc + "%"} <br>`);
+//    document.write(`<hr>`)
+// } /* /for */
+
 for (let i of companies) {
-   document.write(`Компания ${i.name} <br>`)
-   document.write(`бьюджет ${i.budget} <br>`)
-   for (let k of i.expensesPerYear) {
-      expensesPerMothProc = Math.round((k / 12) / 100 * i.tax);
-      expensesPerMoth = Math.round(k / 12);
-      expensesPerMothAll = Math.round(expensesPerMoth + expensesPerMothProc);
-      all += expensesPerMothAll;
-      budgetMoth = i.budget - all;
-      proc = (all * 100 / i.budget).toString().slice(0,5);
-      document.write(`расходы за месяц (включая налог)=${expensesPerMothAll} от ${k} <br> `);
-      document.write(`расходы за месяц=${expensesPerMoth} от ${k} <br> `);
-   }
-   document.write(`бьюджет за месяц=${budgetMoth} <br>`);
-   document.write(`Все расходы=${all} <br>`);
-   document.write(`соотношение бьюджета и расходов в процентах ${"-"+proc+"%"} <br>`);
-   document.write(`<hr>`)
-} /* /for */
+   let maxMath = i.expensesPerYear.reduce((a, b) => a + b) / 12 + i.tax / 100 * i.budget / 12;
+   let allMaxBudget = maxMath / i.budget * 100;
+   console.log(allMaxBudget);
+}
