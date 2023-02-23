@@ -55,7 +55,7 @@ for (let i of companies) {
    maxMath = i.expensesPerYear.reduce((a, b) => a + b);
    let maxMathOfProc = Math.round(maxMath + (i.budget / 100 * i.tax)/12);
    let allMaxBudget = Math.round(maxMath * (100 / i.budget));
-   let budOfMoth = Math.round(i.budget - maxMath/12);
+   let budOfMoth = Math.round(i.budget - maxMathOfProc/12);
    document.write(`бьюджет за месяц=${budOfMoth} <br>`);
    document.write(`Все расходы (в месяц)=${Math.round(maxMath/12)} <br>`);
    document.write(`Все расходы c налогами=${maxMathOfProc} <br>`);
